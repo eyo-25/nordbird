@@ -1,0 +1,1 @@
+{"ast":null,"code":"const Profile = () => {\n  return;\n};","map":{"version":3,"names":["Profile"],"sources":["C:/Users/eyo25/Desktop/eyo25/nodebird/prepare/front/pages/profile.js"],"sourcesContent":["const Profile = () => {\r\n    return\r\n}"],"mappings":"AAAA,MAAMA,OAAO,GAAG,MAAM;EAClB;AACH,CAFD"},"metadata":{},"sourceType":"script"}
