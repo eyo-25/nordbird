@@ -10,5 +10,5 @@ export default function Seo({ title }) {
 }
 
 Seo.propTypes = {
-  title: propTypes.elementType.toString,
+  title: propTypes.string,
 };

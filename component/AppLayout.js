@@ -4,6 +4,17 @@ import Link from 'next/link';
 import { Menu, Input, Button, Row, Col } from 'antd';
 import UserProfile from './UserProfile';
 import LoginForm from './LoginForm';
+import styled from 'styled-components';
+
+const SearchInput = styled(Input.Search)`
+  vertical-align: center;
+`;
+
+// 컴퍼넌트나 태그에 스타일을 인라인형식으로 작성하면 vertual돔이 바뀐걸로 파악해서 리랜더링하기때문에
+// styled-component로 빼서 Input.Search 컴퍼넌트를 스타일 해주어 최적화
+
+// 아니면 const style = useMemo(()=>({ marginTop:10 }),[])해서 스타일 할당
+// 이때 useMemo()는 값을 캐싱해서 변하지않음 <-> useCallBack()은 함수를 캐싱
 
 const AppLayout = ({ children }) => {
   const [isLogin, setIsLogin] = useState(false);
@@ -21,7 +32,7 @@ const AppLayout = ({ children }) => {
           </Link>
         </Menu.Item>
         <Menu.Item key="mail">
-          <Input.Search enterButton style={{ verticalAlign: 'middle' }} />
+          <SearchInput enterButton />
         </Menu.Item>
         <Menu.Item>
           <Link href="/signup">
@@ -33,7 +44,11 @@ const AppLayout = ({ children }) => {
       </Menu>
       <Row>
         <Col xs={24} md={6}>
-          {isLogin ? <UserProfile /> : <LoginForm />}
+          {isLogin ? (
+            <UserProfile setIsLogin={setIsLogin} />
+          ) : (
+            <LoginForm setIsLogin={setIsLogin} />
+          )}
         </Col>
         <Col xs={24} md={12}>
           {children}
